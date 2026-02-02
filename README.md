@@ -1,4 +1,4 @@
-# ComfyUI-GenStash-Node
+# ComfyUI-SaveImage-GenInfo
 
 ComfyUI で生成した画像に A1111 互換の生成情報を JSON で埋め込むカスタムノードです。
 
@@ -6,7 +6,7 @@ ComfyUI で生成した画像に A1111 互換の生成情報を JSON で埋め�
 
 ```bash
 cd ComfyUI/custom_nodes
-git clone https://github.com/your-username/ComfyUI-GenStash-Node.git
+git clone https://github.com/RyoheiTanaka/ComfyUI-SaveImage-GenInfo.git
 ```
 
 追加パッケージは不要です。
@@ -17,18 +17,18 @@ git clone https://github.com/your-username/ComfyUI-GenStash-Node.git
 
 標準の Save Image の代わりに使用します。ワークフローから以下の情報を自動抽出し、PNG メタデータに埋め込みます。
 
-| 項目 | 取得元ノード |
-|------|------------|
-| prompt | CLIPTextEncode (positive) |
-| negative_prompt | CLIPTextEncode (negative) |
-| seed | KSampler / KSamplerAdvanced |
-| steps | KSampler / KSamplerAdvanced |
-| cfg | KSampler / KSamplerAdvanced |
-| sampler | KSampler (sampler_name + scheduler) |
-| denoise | KSampler |
-| model | CheckpointLoaderSimple |
-| width / height | EmptyLatentImage |
-| clip_skip | CLIPSetLastLayer |
+| 項目            | 取得元ノード                        |
+| --------------- | ----------------------------------- |
+| prompt          | CLIPTextEncode (positive)           |
+| negative_prompt | CLIPTextEncode (negative)           |
+| seed            | KSampler / KSamplerAdvanced         |
+| steps           | KSampler / KSamplerAdvanced         |
+| cfg             | KSampler / KSamplerAdvanced         |
+| sampler         | KSampler (sampler_name + scheduler) |
+| denoise         | KSampler                            |
+| model           | CheckpointLoaderSimple              |
+| width / height  | EmptyLatentImage                    |
+| clip_skip       | CLIPSetLastLayer                    |
 
 ### 配線
 
