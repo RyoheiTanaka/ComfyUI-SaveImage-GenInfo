@@ -15,7 +15,7 @@ git clone https://github.com/RyoheiTanaka/ComfyUI-SaveImage-GenInfo.git
 
 ### Save Image (GenStash)
 
-標準の Save Image の代わりに使用します。ワークフローから以下の情報を自動抽出し、PNG メタデータに埋め込みます。
+標準の Save Image の代わりに使用します。ワークフローから以下の情報を自動抽出し、PNG メタデータに JSON として埋め込みます。
 
 | 項目            | 取得元ノード                        |
 | --------------- | ----------------------------------- |
@@ -30,6 +30,14 @@ git clone https://github.com/RyoheiTanaka/ComfyUI-SaveImage-GenInfo.git
 | width / height  | EmptyLatentImage                    |
 | clip_skip       | CLIPSetLastLayer                    |
 
+### パラメータ
+
+| パラメータ      | デフォルト | 説明                                         |
+| --------------- | ---------- | -------------------------------------------- |
+| filename_prefix | GenStash   | ファイル名のプレフィックス                   |
+| foldername      | (空)       | サブフォルダ名。空の場合は output 直下に保存 |
+| save_metadata   | true       | PNG メタデータへの埋め込みの ON/OFF          |
+
 ### 配線
 
 `images` に VAE Decode の出力をつなぐだけです。設定値はワークフローから自動取得されるため、追加の配線は不要です。
@@ -38,7 +46,7 @@ git clone https://github.com/RyoheiTanaka/ComfyUI-SaveImage-GenInfo.git
 [VAE Decode] ──images──▶ [Save Image (GenStash)]
 ```
 
-### 出力例（PNG メタデータ内）
+### 出力例（PNG メタデータ）
 
 キー: `generation_info`
 
@@ -62,10 +70,6 @@ git clone https://github.com/RyoheiTanaka/ComfyUI-SaveImage-GenInfo.git
 ```
 
 ComfyUI のワークフロー JSON (`workflow`, `prompt`) も従来通り保存されます。
-
-## GenStash との連携
-
-GenStash にアップロードすると `generation_info` が自動パースされ、設定値として表示されます。
 
 ## ライセンス
 
